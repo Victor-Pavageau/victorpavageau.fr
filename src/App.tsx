@@ -1,7 +1,8 @@
+import RouteHandler from "./routing"
+
 function App() {
   return (
-    <>
-    </>
+    <RouteHandler />
   )
 }
 
