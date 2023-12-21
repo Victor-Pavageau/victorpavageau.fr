@@ -3,20 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  padding: 0;
-}
-
 * {
+  @apply text-base;
   font-family: "Montserrat", sans-serif;
   background-color: white;
-  @apply text-base;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
