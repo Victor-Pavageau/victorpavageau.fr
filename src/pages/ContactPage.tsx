@@ -1,4 +1,4 @@
-function ContactPage() {
+function ContactPage(): JSX.Element {
   return (
     <div>
       <h1>Contact Page</h1>

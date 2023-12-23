@@ -1,4 +1,4 @@
-function ProjectsPage() {
+function ProjectsPage(): JSX.Element {
   return (
     <div>
       <h1>Projects Page</h1>
