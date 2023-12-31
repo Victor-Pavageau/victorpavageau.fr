@@ -1,4 +1,4 @@
-import RouteHandler from './routing';
+import RouteHandler from './RouteHandler';
 
 function App(): JSX.Element {
   return (

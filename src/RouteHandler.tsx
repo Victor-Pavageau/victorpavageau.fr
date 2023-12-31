@@ -7,6 +7,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
 
 function RouteHandler(): JSX.Element {
+
   return (
     <div className="flex flex-col-reverse sm:flex-col">
       <Navbar />
@@ -22,4 +23,3 @@ function RouteHandler(): JSX.Element {
 }
 
 export default RouteHandler;
-
