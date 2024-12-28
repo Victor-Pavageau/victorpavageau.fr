@@ -15,6 +15,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'semi': ['error', 'always'],
+    'react-hooks/exhaustive-deps': 'off',
     'quotes': ['error', 'single'],
     'indent': ['error', 2],
     'eqeqeq': 'error',
@@ -31,4 +32,4 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-inferrable-types': 'warn',
   },
-}
+};
