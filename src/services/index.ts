@@ -1,0 +1,1 @@
+export { goToPath } from './routingService';
