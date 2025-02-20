@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
@@ -11,16 +11,16 @@ import {
 } from './pages';
 import { goToPath, startAnimation } from './services';
 
-function RouteHandler(): JSX.Element {
+function RouteHandler(): React.JSX.Element {
   const location = useLocation();
   const transitionRef = useRef(null);
 
-  let loadScreen: HTMLDivElement | null =
+  const loadScreen: HTMLDivElement | null =
     document.querySelector('.load-screen');
-  let pageContainer: HTMLDivElement | null =
+  const pageContainer: HTMLDivElement | null =
     document.querySelector('.page-container');
 
-  const onEnterHandler = () => {
+  const onEnterHandler = (): void => {
     startAnimation(loadScreen, pageContainer);
   };
 
