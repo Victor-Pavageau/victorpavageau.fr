@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FiMessageSquare, FiUser } from 'react-icons/fi';
 import { IoCodeSlash, IoHomeOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { goToPath } from '../services';
 
-function Navbar(): JSX.Element {
+function Navbar(): React.JSX.Element {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState<string>(
     window.location.pathname,

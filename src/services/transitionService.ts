@@ -15,7 +15,7 @@ export const startAnimation = (
 const resetAnimation = (
   loadScreen: HTMLDivElement | null,
   pageContainer: HTMLDivElement | null,
-) => {
+): void => {
   gsap.set(loadScreen, { height: '0', top: '0' });
   gsap.set(pageContainer, { opacity: '0', pointerEvents: 'none' });
 };
@@ -24,7 +24,7 @@ const playAnimation = (
   tl: gsap.core.Timeline,
   loadScreen: HTMLDivElement | null,
   pageContainer: HTMLDivElement | null,
-) => {
+): void => {
   tl.to(loadScreen, {
     duration: 1.2,
     height: '100%',

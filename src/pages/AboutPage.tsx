@@ -1,4 +1,6 @@
-function AboutPage(): JSX.Element {
+import React from 'react';
+
+function AboutPage(): React.JSX.Element {
   return (
     <div>
       <h1>About Page</h1>
