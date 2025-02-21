@@ -37,18 +37,23 @@ function RouteHandler(): React.JSX.Element {
             onEnter={onEnterHandler}
             nodeRef={transitionRef}
           >
-            <div className='flex flex-col-reverse sm:flex-col'>
+            <div className='pb-12 pt-0 md:pb-0 md:pt-12'>
               <Navbar />
-              <Routes>
-                <Route path={goToPath('/')} element={<HomePage />} />
-                <Route path={goToPath('/about')} element={<AboutPage />} />
-                <Route
-                  path={goToPath('/projects')}
-                  element={<ProjectsPage />}
-                />
-                <Route path={goToPath('/contact')} element={<ContactPage />} />
-                <Route path={goToPath('*')} element={<NotFoundPage />} />
-              </Routes>
+              <div className='p-2'>
+                <Routes>
+                  <Route path={goToPath('/')} element={<HomePage />} />
+                  <Route path={goToPath('/about')} element={<AboutPage />} />
+                  <Route
+                    path={goToPath('/projects')}
+                    element={<ProjectsPage />}
+                  />
+                  <Route
+                    path={goToPath('/contact')}
+                    element={<ContactPage />}
+                  />
+                  <Route path={goToPath('*')} element={<NotFoundPage />} />
+                </Routes>
+              </div>
             </div>
           </Transition>
         </TransitionGroup>
