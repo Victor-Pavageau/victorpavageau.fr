@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React, { Ref, useRef } from 'react';
+import { Location, Route, Routes, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
 import {
@@ -12,17 +12,17 @@ import {
 import { goToPath, startAnimation } from './services';
 
 function RouteHandler(): React.JSX.Element {
-  const location = useLocation();
-  const transitionRef = useRef(null);
+  const location: Location = useLocation();
+  const transitionRef: Ref<HTMLElement | undefined> = useRef();
 
   const loadScreen: HTMLDivElement | null =
     document.querySelector('.load-screen');
   const pageContainer: HTMLDivElement | null =
     document.querySelector('.page-container');
 
-  const onEnterHandler = (): void => {
+  function onEnterHandler(): void {
     startAnimation(loadScreen, pageContainer);
-  };
+  }
 
   return (
     <>

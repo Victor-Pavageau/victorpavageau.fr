@@ -1,30 +1,30 @@
 import { gsap } from 'gsap';
 
-export const startAnimation = (
+export function startAnimation(
   loadScreen: HTMLDivElement | null,
   pageContainer: HTMLDivElement | null,
-): void => {
+): void {
   if (!loadScreen || !pageContainer) {
     return;
   }
 
   resetAnimation(loadScreen, pageContainer);
   playAnimation(gsap.timeline(), loadScreen, pageContainer);
-};
+}
 
-const resetAnimation = (
+function resetAnimation(
   loadScreen: HTMLDivElement | null,
   pageContainer: HTMLDivElement | null,
-): void => {
+): void {
   gsap.set(loadScreen, { height: '0', top: '0' });
   gsap.set(pageContainer, { opacity: '0', pointerEvents: 'none' });
-};
+}
 
-const playAnimation = (
+function playAnimation(
   tl: gsap.core.Timeline,
   loadScreen: HTMLDivElement | null,
   pageContainer: HTMLDivElement | null,
-): void => {
+): void {
   tl.to(loadScreen, {
     duration: 1.2,
     height: '100%',
@@ -45,4 +45,4 @@ const playAnimation = (
     ease: 'power4.inOut',
     delay: 2,
   });
-};
+}
