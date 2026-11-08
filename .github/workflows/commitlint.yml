@@ -1,0 +1,25 @@
+name: Check Conventional Commits
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  security-events: write
+  checks: write
+  packages: read
+
+jobs:
+  lint-commits:
+    name: Lint commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - uses: webiny/action-conventional-commits@faccb24fc2550dd15c0390d944379d2d8ed9690e # commit hash for v1.3.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          allowed-commit-types: 'feat,fix,chore,style,tech'
