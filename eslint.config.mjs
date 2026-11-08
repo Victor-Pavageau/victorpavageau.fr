@@ -16,7 +16,7 @@ const compat = new FlatCompat({
 });
 
 export default [{
-  ignores: ['**/dist', '**/.eslintrc.cjs', '**/vite.config.ts'],
+  ignores: ['**/dist', '**/eslint.config.mjs', '**/vite.config.ts'],
 }, ...fixupConfigRules(compat.extends(
   'eslint:recommended',
   'plugin:@typescript-eslint/recommended',
@@ -98,7 +98,13 @@ export default [{
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/no-inferrable-types': 'warn',
+    '@typescript-eslint/no-inferrable-types': 0,
+    '@typescript-eslint/typedef': [
+      'warn',
+      {
+        'variableDeclaration': true,
+      },
+    ],
   },
 }, {
   files: ['**/*.ts', '**/*.tsx'],
