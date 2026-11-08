@@ -1,4 +1,4 @@
-import React, { Ref, useRef } from 'react';
+import React, { LegacyRef, Ref, useRef } from 'react';
 import { Location, Route, Routes, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
@@ -15,22 +15,20 @@ function RouteHandler(): React.JSX.Element {
   const location: Location = useLocation();
   const transitionRef: Ref<HTMLElement | undefined> = useRef();
 
-  const loadScreen: HTMLDivElement | null =
-    document.querySelector('.load-screen');
-  const pageContainer: HTMLDivElement | null =
-    document.querySelector('.page-container');
+  const loadScreenRef: LegacyRef<HTMLDivElement> = useRef(null);
+  const pageContainerRef: LegacyRef<HTMLDivElement> = useRef(null);
 
-  function onEnterHandler(): void {
-    startAnimation(loadScreen, pageContainer);
-  }
+  const onEnterHandler: () => void = (): void => {
+    startAnimation(loadScreenRef.current, pageContainerRef.current);
+  };
 
   return (
     <>
       <div className='load-container'>
-        <div className='load-screen'></div>
+        <div className='load-screen' ref={loadScreenRef} />
       </div>
-      <div className='page-container'>
-        <TransitionGroup>
+      <div className='page-container' ref={pageContainerRef}>
+        <TransitionGroup appear>
           <Transition
             key={location.pathname}
             timeout={0}

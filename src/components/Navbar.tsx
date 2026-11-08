@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiMessageSquare, FiUser } from 'react-icons/fi';
 import { IoCodeSlash, IoHomeOutline } from 'react-icons/io5';
-import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import { Location, NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import { goToPath } from '../services';
 import { Path } from '../types';
 
@@ -12,10 +12,10 @@ type NavbarItem = {
 };
 
 function Navbar(): React.JSX.Element {
-  const location = useLocation();
+  const location: Location = useLocation();
   const navigate: NavigateFunction = useNavigate();
 
-  const iconClass = 'text-3xl sm:text-xl';
+  const iconClass: string = 'text-3xl sm:text-xl';
 
   const navbarItems: NavbarItem[] = [
     {
