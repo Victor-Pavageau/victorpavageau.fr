@@ -1,24 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Space+Grotesk:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Young+Serif&display=swap');
 
 @tailwind components;
 @tailwind utilities;
 
-/* Global style */
+/* Theme variables */
 
-* {
-  @apply text-base scroll-smooth m-0 p-0;
-  font-family: 'Montserrat', sans-serif;
+:root {
+  color-scheme: light;
+
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Young Serif', Georgia, serif;
+  --font-read: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --color-bg: 241 233 223;
+  --color-bg-inverse: 24 24 24;
+  --color-surface: 250 245 238;
+  --color-text: 43 27 23;
+  --color-muted: 106 82 73;
+  --color-border: 220 205 187;
+  --color-primary: 181 65 42;
+  --color-primary-hover: 158 54 34;
+  --color-on-primary: 255 255 255;
+  --color-accent-2: 143 211 182;
+
+  --gradient-accent: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(217 107 43) 100%);
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Space Grotesk', sans-serif;
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: 24 24 24;
+  --color-bg-inverse: 241 233 223;
+  --color-surface: 34 34 34;
+  --color-text: 243 238 232;
+  --color-muted: 171 171 171;
+  --color-border: 51 51 51;
+  --color-primary: 255 111 89;
+  --color-primary-hover: 255 133 115;
+  --color-on-primary: 24 24 24;
+  --color-accent-2: 255 177 98;
+
+  --gradient-accent: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(255 143 90) 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  font-family: var(--font-sans);
+}
+
+/* Global style */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
 }
 
 h1 {
-  @apply text-5xl;
+  @apply text-6xl;
 }
 
 h2 {
@@ -29,8 +73,9 @@ h3 {
   @apply text-3xl;
 }
 
-h4 {
-  @apply text-2xl;
+:focus-visible {
+  outline: 2px solid rgb(var(--color-primary));
+  outline-offset: 3px;
 }
 
 /* Routing animation */
@@ -51,7 +96,7 @@ h4 {
   padding-top: 0px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: #303030;
+  background-color: rgb(var(--color-bg-inverse));
   width: 100%;
   height: 0%;
 }

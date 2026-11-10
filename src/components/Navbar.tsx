@@ -42,11 +42,11 @@ function Navbar(): React.JSX.Element {
 
   function getNavbarItemClass(path: string): string {
     return `flex gap-2 items-center align-middle cursor-pointer
-    ${location.pathname === path && 'text-yellow-400'}`;
+    ${location.pathname === path && 'text-primary'}`;
   }
 
   return (
-    <nav className='fixed bottom-0 md:top-0 md:bottom-auto left-0 w-full bg-slate-800 text-white shadow-md rounded-t-3xl md:rounded-none'>
+    <nav className='fixed bottom-0 md:top-0 md:bottom-auto left-0 w-full shadow-md rounded-t-3xl md:rounded-none'>
       <div className='flex justify-evenly md:gap-10 py-3'>
         {navbarItems.map((item) => (
           <div
