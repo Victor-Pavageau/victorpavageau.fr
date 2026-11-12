@@ -21,7 +21,6 @@
   --color-border: 220 205 187;
   --color-primary: 181 65 42;
   --color-primary-hover: 158 54 34;
-  --color-on-primary: 255 255 255;
   --color-accent-2: 143 211 182;
 
   --gradient-accent: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(217 107 43) 100%);
@@ -38,7 +37,6 @@
   --color-border: 51 51 51;
   --color-primary: 255 111 89;
   --color-primary-hover: 255 133 115;
-  --color-on-primary: 24 24 24;
   --color-accent-2: 255 177 98;
 
   --gradient-accent: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(255 143 90) 100%);

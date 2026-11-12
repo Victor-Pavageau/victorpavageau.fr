@@ -1,1 +1,1 @@
-export type Path = '/' | '/about' | '/projects' | '/contact' | '*';
+export type Path = '/' | '/about' | '/projects' | '/articles' | '*';
