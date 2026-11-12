@@ -16,7 +16,6 @@ export default {
         border: withAlpha('--color-border'),
         primary: withAlpha('--color-primary'),
         'primary-hover': withAlpha('--color-primary-hover'),
-        'on-primary': withAlpha('--color-on-primary'),
         'accent-2': withAlpha('--color-accent-2'),
       },
       fontFamily: {

@@ -4,7 +4,7 @@ import { Transition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
 import {
   AboutPage,
-  ContactPage,
+  ArticlesPage,
   HomePage,
   NotFoundPage,
   ProjectsPage,
@@ -24,6 +24,7 @@ function RouteHandler(): React.JSX.Element {
 
   return (
     <>
+      <Navbar />
       <div className='load-container'>
         <div className='load-screen' ref={loadScreenRef} />
       </div>
@@ -36,7 +37,6 @@ function RouteHandler(): React.JSX.Element {
             nodeRef={transitionRef}
           >
             <div className='pb-12 pt-0 md:pb-0 md:pt-12'>
-              <Navbar />
               <div className='p-2'>
                 <Routes>
                   <Route path={goToPath('/')} element={<HomePage />} />
@@ -46,8 +46,8 @@ function RouteHandler(): React.JSX.Element {
                     element={<ProjectsPage />}
                   />
                   <Route
-                    path={goToPath('/contact')}
-                    element={<ContactPage />}
+                    path={goToPath('/articles')}
+                    element={<ArticlesPage />}
                   />
                   <Route path={goToPath('*')} element={<NotFoundPage />} />
                 </Routes>
