@@ -1,8 +1,8 @@
-import React from 'react';
+import type { IconType } from 'react-icons';
 import { Path } from './Path';
 
 export type NavbarItem = {
   path: Path;
-  icon: React.JSX.Element;
+  icon: IconType;
   text: string;
 };

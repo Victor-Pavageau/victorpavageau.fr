@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
-// eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-const withAlpha = (name) => `rgb(var(${name}) / <alpha-value>)`;
+import type { Config } from 'tailwindcss';
+import type { ThemeColorVar } from './src/types';
+
+function withAlpha(theme: ThemeColorVar): string {
+  return `rgb(var(${theme}) / <alpha-value>)`;
+}
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -27,4 +31,4 @@ export default {
     },
   },
   plugins: [],
-};
+} satisfies Config;

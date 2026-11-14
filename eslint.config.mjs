@@ -1,6 +1,7 @@
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
@@ -19,11 +20,11 @@ export default [{
   ignores: ['**/dist', '**/eslint.config.mjs', '**/vite.config.ts'],
 }, ...fixupConfigRules(compat.extends(
   'eslint:recommended',
-  'plugin:@typescript-eslint/recommended',
   'plugin:react-hooks/recommended',
 )), {
   plugins: {
     'react-refresh': reactRefresh,
+    '@typescript-eslint': tsPlugin,
   },
 
   languageOptions: {
@@ -51,7 +52,7 @@ export default [{
     'camelcase': 'error',
     'no-trailing-spaces': 'error',
     'comma-dangle': ['error', 'always-multiline'],
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
     'no-undef': 'error',
     'no-var': 'error',
     'no-const-assign': 'error',
