@@ -36,7 +36,7 @@ function RouteHandler(): React.JSX.Element {
             onEnter={onEnterHandler}
             nodeRef={transitionRef}
           >
-            <div className='pb-12 pt-0 md:pb-0 md:pt-12'>
+            <div className='pb-28 pt-16 md:pb-0 md:pt-20'>
               <div className='p-2'>
                 <Routes>
                   <Route path={goToPath('/')} element={<HomePage />} />

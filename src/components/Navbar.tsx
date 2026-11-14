@@ -1,65 +1,71 @@
 import React from 'react';
 import { FiUser } from 'react-icons/fi';
 import { IoGitBranchOutline, IoHomeOutline, IoNewspaperOutline } from 'react-icons/io5';
-import { Location, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { ThemeContextValue } from '../helpers/ThemeHelper';
+import { useTheme } from '../hooks/useTheme';
 import { goToPath } from '../services';
 import { NavbarItem } from '../types';
+import ThemeToggle from './ThemeToggle';
+
+const navbarItems: NavbarItem[] = [
+  { path: '/', icon: IoHomeOutline, text: 'Home' },
+  { path: '/about', icon: FiUser, text: 'About' },
+  { path: '/projects', icon: IoGitBranchOutline, text: 'Projects' },
+  { path: '/articles', icon: IoNewspaperOutline, text: 'Articles' },
+];
+
+function itemClassName(isActive: boolean): string {
+  return isActive ? 'text-primary' : 'text-text hover:text-primary';
+}
 
 function Navbar(): React.JSX.Element {
-  const location: Location = useLocation();
-
-  const iconClass: string = 'text-2xl md:text-4xl';
-
-  const navbarItems: NavbarItem[] = [
-    {
-      path: '/',
-      icon: <IoHomeOutline className={iconClass} />,
-      text: 'Home',
-    },
-    {
-      path: '/about',
-      icon: <FiUser className={iconClass} />,
-      text: 'About',
-    },
-    {
-      path: '/projects',
-      icon: <IoGitBranchOutline  className={iconClass} />,
-      text: 'Projects',
-    },
-    {
-      path: '/articles',
-      icon: <IoNewspaperOutline  className={iconClass} />,
-      text: 'Articles',
-    },
-  ];
-
-  function getNavbarItemClass(path: string): string {
-    return `flex flex-col md:flex-row md:gap-2 items-center align-middle cursor-pointer no-underline
-    ${location.pathname === path ? 'text-primary' : 'text-text'}`;
-  }
+  const { theme }: ThemeContextValue = useTheme();
 
   return (
     <>
-      <div className='fixed flex justify-start z-30 w-1/3 lg:w-1/2 h-6 md:h-10 md:justify-center md:items-center'>
-        <a className='mt-4 pl-4 h-full md:h-2/3' href={goToPath('/')}>
-          <img className='h-full' src="./assets/logo.png" alt="logo" />
-        </a>
-      </div>
-      <nav className='fixed flex bottom-4 left-0 right-0 mx-auto z-20 bg-surface w-3/4 text-xs rounded-3xl md:h-10 md:w-full md:left-0 md:shadow-xl md:text-base md:font-medium md:bg-bg md:top-0 md:bottom-auto md:rounded-none md:py-4'>
-        <div className='flex w-full justify-evenly py-3 md:w-2/3 md:justify-end md:px-40 md:gap-8'>
-          {navbarItems.map((item) => (
-            <a
-              key={item.path}
-              className={getNavbarItemClass(item.path)}
-              href={goToPath(item.path)}
-            >
-              <div className='md:hidden'>
-                {item.icon}
-              </div>
-              <div>{item.text}</div>
-            </a>
-          ))}
+      <header className='fixed inset-x-0 top-0 z-30 bg-bg'>
+        <div className='mx-auto select-none flex h-14 max-w-5xl items-center justify-between px-4 md:grid md:h-16 md:grid-cols-[1fr_auto_1fr] md:px-8'>
+          <NavLink to={goToPath('/')} end className='shrink-0 md:justify-self-start'>
+            <img
+              src={`./assets/logo_${theme}.png`}
+              alt='Victor Pavageau logo'
+              className='h-6 w-auto md:h-8'
+            />
+          </NavLink>
+
+          <nav className='hidden items-center gap-8 md:flex'>
+            {navbarItems.map((item: NavbarItem) => (
+              <NavLink
+                key={item.path}
+                to={goToPath(item.path)}
+                end
+                className={({ isActive }) => `text-base no-underline font-medium ${itemClassName(isActive)}`}
+              >
+                {item.text}
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className='md:justify-self-end'>
+            <ThemeToggle />
+          </div>
         </div>
+      </header>
+
+      <nav
+        className='fixed inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] z-20 mx-auto flex w-3/4 items-center justify-evenly rounded-3xl bg-surface px-3 py-3 text-xs md:hidden'>
+        {navbarItems.map((item: NavbarItem) => (
+          <NavLink
+            key={item.path}
+            to={goToPath(item.path)}
+            end
+            className={({ isActive }) => `flex flex-col no-underline items-center gap-1 ${itemClassName(isActive)}`}
+          >
+            <item.icon className='text-2xl' />
+            <span>{item.text}</span>
+          </NavLink>
+        ))}
       </nav>
     </>
   );
